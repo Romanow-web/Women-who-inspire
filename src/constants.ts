@@ -1,3 +1,5 @@
+
+
 import { Content, Language } from './types';
 
 export const SUPPORTED_LANGUAGES: Language[] = ['en', 'uk'];
@@ -32,29 +34,29 @@ export const CONTENT: Record<Language, Content> = {
     },
     hero: {
       title: 'Women Who Inspire',
-      subtitle: 'An evening dedicated to empowerment, connection, and celebration of women.',
-      date: 'March 8, 2025 • 4:30 PM',
+      subtitle: 'Created by women, for women, and about women! Ukrainian women are flowers of strength that bloom even in the midst of storms.',
+      date: 'March 8, 2025 · 9:00 AM - 5:00 PM',
       location: 'San Diego, California',
       cta: 'Register Now',
     },
     about: {
       title: 'About the Event',
-      description: 'Join us for a special celebration of International Women\'s Day. "Women Who Inspire" is more than just an event; it is a movement to connect women from diverse backgrounds, share stories of resilience, and foster a supportive community.',
+      description: '"Women Who Inspire" is an event created by women, for women, and about women! This is a unique opportunity to meet incredible Ukrainian women who have walked their path. Remind yourself that "everything is okay with you" and "you are not alone." Here, you will find wings and inspiration.',
       highlights: [
-        { title: 'Inspiration', desc: 'Hear from women who have broken barriers.', icon: 'Mic' },
-        { title: 'Networking', desc: 'Connect with like-minded individuals.', icon: 'Users' },
-        { title: 'Celebration', desc: 'Enjoy music, art, and a festive atmosphere.', icon: 'Star' },
+        { title: 'Inspiration', desc: 'Hear incredible stories and get a dose of motivation.', icon: 'Sparkles' },
+        { title: 'Connection', desc: 'Powerful networking among Ukrainian women in the US.', icon: 'HeartHandshake' },
+        { title: 'All About You', desc: 'Stylists, cosmetologists, photo zones, and surprise bags.', icon: 'Gift' },
       ],
     },
     program: {
-      title: 'Event Agenda',
+      title: 'What to Expect',
       items: [
-        { time: '16:30', title: 'Doors Open & Welcome Coffee', description: 'Check-in and mingling.' },
-        { time: '17:00', title: 'Opening Remarks', description: 'Welcome speech by the organizers.' },
-        { time: '17:15', title: 'Panel Discussion: "Resilience"', description: 'Inspiring stories from our keynote speakers.' },
-        { time: '18:30', title: 'Networking Break', description: 'Connect with speakers and attendees.' },
-        { time: '19:00', title: 'Workshops & Art', description: 'Interactive sessions and creative displays.' },
-        { time: '20:00', title: 'Evening Celebration', description: 'Music, drinks, and networking.' },
+        { time: '09:00 - 10:00', title: 'Registration', description: 'Check-in and welcome.' },
+        { time: '10:30 - 11:30', title: 'First Speaker', description: 'Inspirational talk.' },
+        { time: '11:45 - 12:45', title: 'Second Speaker', description: 'Motivation and insights.' },
+        { time: '13:20 - 14:30', title: 'Panel Discussion (4 Speakers)', description: 'Transformation experience.' },
+        { time: '14:40 - 15:40', title: 'Third Speaker', description: 'Empowering story.' },
+        { time: '16:00 - 17:00', title: 'Closing Remarks by Organizers', description: 'Wrap up and networking.' },
       ],
     },
     speakers: {
@@ -78,6 +80,7 @@ export const CONTENT: Record<Language, Content> = {
       address: 'Exact location to be announced soon.',
       city: 'San Diego, CA, USA',
       note: 'Registered attendees will receive the exact address via email.',
+      view: 'View Area on Google Maps',
     },
     footer: {
       copyright: 'All rights reserved.',
@@ -104,29 +107,29 @@ export const CONTENT: Record<Language, Content> = {
     },
     hero: {
       title: 'Women Who Inspire',
-      subtitle: 'Вечір, присвячений силі, єднанню та святкуванню жінок.',
-      date: '8 Березня 2025 • 16:30',
+      subtitle: 'Створено жінками, для жінок і про жінок! Українські жінки — це квіти сили, що цвітуть навіть посеред штормів.',
+      date: '8 Березня 2025 · 09:00 - 17:00',
       location: 'Сан-Дієго, Каліфорнія',
       cta: 'Зареєструватися',
     },
     about: {
       title: 'Про подію',
-      description: 'Приєднуйтесь до нас для особливого святкування Міжнародного жіночого дня. "Women Who Inspire" — це більше, ніж просто подія; це рух для об\'єднання жінок з різним досвідом, обміну історіями стійкості та створення спільноти підтримки.',
+      description: '"Women Who Inspire" — це подія, створена жінками, для жінок і про жінок! Це унікальна можливість зустріти неймовірних українських жінок, які пройшли свій шлях. Нагадайте собі, що "з тобою все так" і "ти не одна". Тут ви знайдете крила та натхнення.',
       highlights: [
-        { title: 'Натхнення', desc: 'Почуйте жінок, які ламають бар\'єри.', icon: 'Mic' },
-        { title: 'Нетворкінг', desc: 'Знайомтеся з однодумцями.', icon: 'Users' },
-        { title: 'Святкування', desc: 'Насолоджуйтесь музикою, мистецтвом та атмосферою.', icon: 'Star' },
+        { title: 'Натхнення', desc: 'Почуйте неймовірні історії та отримайте дозу мотивації.', icon: 'Sparkles' },
+        { title: 'Єднання', desc: 'Потужний нетворкінг серед українських жінок у США.', icon: 'HeartHandshake' },
+        { title: 'Все для тебе', desc: 'Стилісти, косметологи, фотозони та подарунки.', icon: 'Gift' },
       ],
     },
     program: {
-      title: 'Програма заходу',
+      title: 'Що очікувати',
       items: [
-        { time: '16:30', title: 'Відкриття дверей та кава', description: 'Реєстрація та знайомство.' },
-        { time: '17:00', title: 'Вітальне слово', description: 'Відкриття події організаторами.' },
-        { time: '17:15', title: 'Панельна дискусія: "Стійкість"', description: 'Надихаючі історії від наших спікерів.' },
-        { time: '18:30', title: 'Перерва на нетворкінг', description: 'Спілкування зі спікерами та гостями.' },
-        { time: '19:00', title: 'Воркшопи та Мистецтво', description: 'Інтерактивні сесії та творчі виставки.' },
-        { time: '20:00', title: 'Вечірнє святкування', description: 'Музика, напої та нетворкінг.' },
+        { time: '09:00 - 10:00', title: 'Реєстрація', description: 'Зустріч гостей та реєстрація.' },
+        { time: '10:30 - 11:30', title: 'Перший спікер', description: 'Натхнення та історія успіху.' },
+        { time: '11:45 - 12:45', title: 'Другий спікер', description: 'Мотивація та інсайти.' },
+        { time: '13:20 - 14:30', title: 'Панельна дискусія (4 Спікери)', description: 'Досвід трансформації.' },
+        { time: '14:40 - 15:40', title: '3й спікер', description: 'Розширення можливостей.' },
+        { time: '16:00 - 17:00', title: 'Заключна частина від організаторів', description: 'Завершення події.' },
       ],
     },
     speakers: {
@@ -150,6 +153,7 @@ export const CONTENT: Record<Language, Content> = {
       address: 'Точна адреса буде оголошена згодом.',
       city: 'Сан-Дієго, США',
       note: 'Зареєстровані учасники отримають точну адресу електронною поштою.',
+      view: 'Подивитися на карті',
     },
     footer: {
       copyright: 'Всі права захищено.',

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../App';
 import { Cookie, Check } from 'lucide-react';

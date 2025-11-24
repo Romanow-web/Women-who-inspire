@@ -35,9 +35,23 @@ const ScrollToTop = () => {
 export default function App() {
   const [lang, setLang] = useState<Language>('en');
 
+  // Load language from local storage if available
+  useEffect(() => {
+    const savedLang = localStorage.getItem('lang') as Language;
+    if (savedLang && (savedLang === 'en' || savedLang === 'uk')) {
+      setLang(savedLang);
+    }
+  }, []);
+
+  // Save language to local storage on change
+  const handleSetLang = (newLang: Language) => {
+    setLang(newLang);
+    localStorage.setItem('lang', newLang);
+  };
+
   const value = {
     lang,
-    setLang,
+    setLang: handleSetLang,
     content: CONTENT[lang],
   };
 

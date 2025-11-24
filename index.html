@@ -1,609 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Women Who Inspire</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Tailwind CSS (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Montserrat', 'sans-serif'],
-            },
-            colors: {
-              primary: '#6D28D9', // Purple-700
-              secondary: '#4C1D95', // Purple-900
-              accent: '#F59E0B', // Amber-500
-              light: '#F3E8FF', // Purple-100
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#6D28D9', // Purple-700
+                        secondary: '#4C1D95', // Purple-900
+                        accent: '#F59E0B', // Amber-500
+                        light: '#F3E8FF', // Purple-100
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        }
+                    }
+                }
             }
-          }
         }
-      }
     </script>
-
-    <!-- Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-
-    <style>
-      html { scroll-behavior: smooth; }
-      body { font-family: 'Montserrat', sans-serif; }
-      .glass-nav {
-        background: rgba(17, 24, 39, 0.8);
-        backdrop-filter: blur(12px);
-      }
-      .glass-panel {
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(8px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-      }
-      .hide-scrollbar::-webkit-scrollbar {
-        display: none;
-      }
-      .hide-scrollbar {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-      }
-    </style>
-<script type="importmap">
+    
+    <script type="importmap">
 {
   "imports": {
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.6",
+    "react": "https://esm.sh/react@18.2.0",
+    "react/jsx-runtime": "https://esm.sh/react@18.2.0/jsx-runtime",
+    "react-dom": "https://esm.sh/react-dom@18.2.0?deps=react@18.2.0",
+    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client?deps=react@18.2.0",
+    "react-router-dom": "https://esm.sh/react-router-dom@6.22.3?deps=react@18.2.0,react-dom@18.2.0",
+    "lucide-react": "https://esm.sh/lucide-react@0.344.0?deps=react@18.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
     "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
     "vite": "https://aistudiocdn.com/vite@^7.2.4",
-    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1"
   }
 }
 </script>
 </head>
-<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen relative">
-
-    <!-- Header -->
-    <div class="fixed top-4 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
-        <header class="pointer-events-auto w-full max-w-5xl glass-nav border border-white/10 shadow-2xl text-white rounded-full px-5 py-3 md:px-8 md:py-4 flex items-center justify-between transition-all duration-300">
-            <!-- Logo -->
-            <a href="#" onclick="window.scrollTo(0,0)" class="text-lg md:text-xl font-bold tracking-tight text-white hover:text-accent transition-colors">
-                Women Who Inspire
-            </a>
-
-            <!-- Desktop Nav -->
-            <nav class="hidden md:flex items-center gap-8">
-                <a href="#about" class="nav-link text-sm font-bold tracking-wide text-gray-300 hover:text-white transition-colors relative group" data-i18n="nav.about">About</a>
-                <a href="#program" class="nav-link text-sm font-bold tracking-wide text-gray-300 hover:text-white transition-colors relative group" data-i18n="nav.program">Program</a>
-                <a href="#speakers" class="nav-link text-sm font-bold tracking-wide text-gray-300 hover:text-white transition-colors relative group" data-i18n="nav.speakers">Speakers</a>
-                <a href="#location" class="nav-link text-sm font-bold tracking-wide text-gray-300 hover:text-white transition-colors relative group" data-i18n="nav.contact">Location</a>
-                
-                <div class="h-4 w-px bg-white/20"></div>
-
-                <button id="lang-toggle" class="flex items-center gap-1 text-xs font-bold text-gray-300 hover:text-white transition-colors uppercase tracking-wider">
-                    <i data-lucide="globe" class="w-4 h-4"></i>
-                    <span id="current-lang">EN</span>
-                </button>
-                
-                <a href="https://www.eventbrite.com/e/1938436097549" target="_blank" class="bg-accent hover:bg-white hover:text-secondary text-secondary px-5 py-2 rounded-full text-xs md:text-sm font-bold transition-all duration-300 flex items-center gap-2 shadow-lg transform hover:-translate-y-0.5">
-                    <i data-lucide="ticket" class="w-4 h-4"></i>
-                    <span data-i18n="nav.tickets">Get Tickets</span>
-                </a>
-            </nav>
-
-            <!-- Mobile Menu Toggle -->
-            <div class="flex items-center gap-3 md:hidden">
-                <button id="lang-toggle-mobile" class="text-[10px] font-bold border border-white/20 rounded px-1.5 py-0.5 uppercase text-gray-300">EN</button>
-                <button id="menu-toggle" class="text-gray-300 hover:text-white transition-colors p-1">
-                    <i data-lucide="menu" class="w-6 h-6"></i>
-                </button>
-            </div>
-        </header>
-
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden pointer-events-auto absolute top-full mt-2 w-[calc(100%-2rem)] max-w-sm bg-gray-900/95 backdrop-blur-xl border border-white/10 rounded-3xl shadow-xl overflow-hidden z-40">
-            <nav class="flex flex-col p-4 gap-1">
-                <a href="#about" class="mobile-link text-left text-lg font-medium py-3 px-4 rounded-xl text-gray-200 hover:bg-white/5 transition-colors" data-i18n="nav.about">About</a>
-                <a href="#program" class="mobile-link text-left text-lg font-medium py-3 px-4 rounded-xl text-gray-200 hover:bg-white/5 transition-colors" data-i18n="nav.program">Program</a>
-                <a href="#speakers" class="mobile-link text-left text-lg font-medium py-3 px-4 rounded-xl text-gray-200 hover:bg-white/5 transition-colors" data-i18n="nav.speakers">Speakers</a>
-                <a href="#location" class="mobile-link text-left text-lg font-medium py-3 px-4 rounded-xl text-gray-200 hover:bg-white/5 transition-colors" data-i18n="nav.contact">Location</a>
-                <div class="pt-3 mt-2 border-t border-white/10">
-                    <a href="https://www.eventbrite.com/e/1938436097549" target="_blank" class="bg-accent text-secondary text-center py-3 rounded-xl font-bold w-full flex justify-center items-center gap-2 shadow-md active:scale-95 transition-transform">
-                        <i data-lucide="ticket" class="w-4 h-4"></i>
-                        <span data-i18n="nav.tickets">Get Tickets</span>
-                    </a>
-                </div>
-            </nav>
-        </div>
-    </div>
-
-    <!-- Main Content -->
-    <main class="flex-grow">
-        
-        <!-- Hero Section -->
-        <section class="relative min-h-[95vh] flex items-center justify-center bg-secondary text-white overflow-hidden pt-20 pb-10">
-            <!-- Abstract Background -->
-            <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-20 pointer-events-none">
-                <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary rounded-full blur-[100px]"></div>
-                <div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-accent rounded-full blur-[100px]"></div>
-            </div>
-
-            <div class="container mx-auto px-4 text-center relative z-10 flex flex-col items-center">
-                <div class="inline-block border border-white/30 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-bold tracking-widest uppercase mb-6 shadow-lg" data-i18n="hero.date">
-                    March 8, 2025 • 4:30 PM
-                </div>
-                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight drop-shadow-md" data-i18n="hero.title">
-                    Women Who Inspire
-                </h1>
-                <p class="text-lg md:text-xl text-purple-100 mb-10 max-w-2xl mx-auto font-medium" data-i18n="hero.subtitle">
-                    An evening dedicated to empowerment, connection, and celebration of women.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-5 justify-center items-center mb-12">
-                    <a href="https://www.eventbrite.com/e/1938436097549" target="_blank" class="px-8 py-4 bg-accent text-secondary rounded-full text-lg font-bold shadow-xl hover:bg-white hover:text-secondary transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 flex items-center gap-2">
-                        <i data-lucide="ticket" class="w-5 h-5"></i>
-                        <span data-i18n="hero.cta">Register Now</span>
-                    </a>
-                    <div class="flex items-center gap-2 text-sm md:text-base font-semibold bg-white/10 backdrop-blur-md px-5 py-3 rounded-full border border-white/20">
-                        <i data-lucide="map-pin" class="w-4 h-4 text-accent"></i>
-                        <span data-i18n="hero.location">San Diego, California</span>
-                    </div>
-                </div>
-
-                <!-- Countdown Timer -->
-                <div id="countdown-timer" class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 w-full max-w-3xl">
-                    <div class="glass-panel rounded-2xl p-4 flex flex-col items-center justify-center min-w-[100px]">
-                        <span id="timer-days" class="text-4xl md:text-6xl font-bold text-white mb-1 drop-shadow-lg font-mono">00</span>
-                        <span class="text-[10px] md:text-xs font-bold uppercase tracking-widest text-accent" data-i18n="timer.days">Days</span>
-                    </div>
-                    <div class="glass-panel rounded-2xl p-4 flex flex-col items-center justify-center min-w-[100px]">
-                        <span id="timer-hours" class="text-4xl md:text-6xl font-bold text-white mb-1 drop-shadow-lg font-mono">00</span>
-                        <span class="text-[10px] md:text-xs font-bold uppercase tracking-widest text-accent" data-i18n="timer.hours">Hours</span>
-                    </div>
-                    <div class="glass-panel rounded-2xl p-4 flex flex-col items-center justify-center min-w-[100px]">
-                        <span id="timer-minutes" class="text-4xl md:text-6xl font-bold text-white mb-1 drop-shadow-lg font-mono">00</span>
-                        <span class="text-[10px] md:text-xs font-bold uppercase tracking-widest text-accent" data-i18n="timer.minutes">Minutes</span>
-                    </div>
-                    <div class="glass-panel rounded-2xl p-4 flex flex-col items-center justify-center min-w-[100px]">
-                        <span id="timer-seconds" class="text-4xl md:text-6xl font-bold text-white mb-1 drop-shadow-lg font-mono">00</span>
-                        <span class="text-[10px] md:text-xs font-bold uppercase tracking-widest text-accent" data-i18n="timer.seconds">Seconds</span>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="py-24 bg-white">
-            <div class="container mx-auto px-4">
-                <div class="max-w-4xl mx-auto text-center mb-16">
-                    <h2 class="text-3xl md:text-5xl font-bold text-secondary mb-8" data-i18n="about.title">About the Event</h2>
-                    <p class="text-lg md:text-xl text-gray-600 leading-relaxed font-medium" data-i18n="about.description">
-                        Join us for a special celebration of International Women's Day.
-                    </p>
-                </div>
-
-                <div id="highlights-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                    <!-- Highlights injected by JS -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Program Section -->
-        <section id="program" class="py-24 bg-purple-50">
-            <div class="container mx-auto px-4 max-w-4xl">
-                <h2 class="text-3xl md:text-5xl font-bold text-secondary mb-12 text-center" data-i18n="program.title">Event Agenda</h2>
-                <div id="program-list" class="space-y-4">
-                    <!-- Program items injected by JS -->
-                </div>
-                <div class="text-center mt-12">
-                    <a href="https://www.eventbrite.com/e/1938436097549" target="_blank" class="inline-flex px-10 py-4 bg-primary text-white rounded-full text-lg font-bold shadow-lg hover:bg-secondary transition-all duration-300 transform hover:scale-105 items-center gap-2">
-                        <i data-lucide="ticket" class="w-5 h-5"></i>
-                        <span data-i18n="nav.tickets">Get Tickets</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Speakers Section -->
-        <section id="speakers" class="py-24 bg-white overflow-hidden">
-            <div class="container mx-auto px-4">
-                <div class="flex flex-col md:flex-row justify-between items-end mb-12 max-w-6xl mx-auto gap-4">
-                    <h2 class="text-3xl md:text-5xl font-bold text-secondary text-center md:text-left w-full md:w-auto" data-i18n="speakers.title">Meet Our Speakers</h2>
-                    
-                    <!-- Controls -->
-                    <div class="flex gap-3 justify-center w-full md:w-auto">
-                        <button id="prev-slide" class="p-3 rounded-full border border-gray-200 hover:bg-primary hover:text-white hover:border-primary transition-all">
-                            <i data-lucide="chevron-left" class="w-6 h-6"></i>
-                        </button>
-                        <button id="next-slide" class="p-3 rounded-full border border-gray-200 hover:bg-primary hover:text-white hover:border-primary transition-all">
-                            <i data-lucide="chevron-right" class="w-6 h-6"></i>
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="max-w-6xl mx-auto relative overflow-hidden py-4">
-                     <div id="carousel-track" class="flex transition-transform duration-500 ease-out will-change-transform">
-                        <!-- Speakers injected by JS -->
-                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sponsors -->
-        <section class="py-24 bg-white border-t border-gray-100">
-            <div class="container mx-auto px-4 text-center">
-               <div class="inline-block border border-primary/20 bg-primary/5 px-4 py-2 rounded-full mb-10">
-                  <h3 class="text-sm font-bold text-primary tracking-[0.2em] uppercase" data-i18n="sponsors.title">Our Sponsors</h3>
-               </div>
-               
-               <div id="sponsors-list" class="flex flex-wrap justify-center items-center gap-10 md:gap-20">
-                 <!-- Sponsors injected by JS -->
-               </div>
-            </div>
-        </section>
-
-        <!-- Location -->
-        <section id="location" class="py-24 bg-secondary text-white relative overflow-hidden">
-            <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-12 max-w-7xl relative z-10">
-               <div class="md:w-1/2">
-                  <h2 class="text-4xl md:text-5xl font-bold mb-8" data-i18n="location.title">Venue</h2>
-                  <div class="space-y-6 text-lg text-purple-100">
-                     <div class="flex gap-4">
-                       <div class="mt-1 bg-white/10 p-2 rounded-lg h-fit">
-                         <i data-lucide="map-pin" class="w-6 h-6 text-accent"></i>
-                       </div>
-                       <div>
-                         <p class="text-xl font-bold text-white" data-i18n="location.venue">San Diego, California</p>
-                         <p class="font-medium opacity-90" data-i18n="location.address">Exact location to be announced soon.</p>
-                         <p class="text-sm opacity-70 mt-1" data-i18n="location.note">Registered attendees will receive the exact address via email.</p>
-                       </div>
-                     </div>
-                     
-                     <div class="flex gap-4 items-center mt-6">
-                       <div class="bg-white/10 p-2 rounded-lg">
-                         <i data-lucide="calendar" class="w-6 h-6 text-accent"></i>
-                       </div>
-                       <span class="text-xl font-medium" data-i18n="hero.date">March 8, 2025 • 4:30 PM</span>
-                     </div>
-                  </div>
-                  <a href="https://www.google.com/maps/search/?api=1&query=San+Diego+California" target="_blank" class="inline-flex items-center gap-3 mt-10 text-accent font-bold hover:text-white transition-colors text-lg group">
-                    View Area on Google Maps <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
-                  </a>
-               </div>
-               
-               <div class="md:w-1/2 w-full h-96 bg-gray-800 rounded-3xl overflow-hidden shadow-2xl ring-4 ring-white/10">
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d107577.62534575822!2d-117.26284683050017!3d32.74836691461937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d9530fad921e4b%3A0xd3a21fdfd15df79!2sSan%20Diego%2C%20CA%2C%20USA!5e0!3m2!1sen!2sua!4v1709900000000!5m2!1sen!2sua" width="100%" height="100%" style="border:0; filter: grayscale(100%);" allowfullscreen="" loading="lazy"></iframe>
-               </div>
-            </div>
-         </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-secondary text-white py-12 border-t border-white/10">
-        <div class="container mx-auto px-4 text-center">
-          <h2 class="text-2xl font-bold mb-4">Women Who Inspire</h2>
-          <p class="text-purple-200 mb-8"><span data-i18n="hero.date">March 8</span> • <span data-i18n="hero.location">San Diego</span></p>
-          
-          <div class="flex flex-col md:flex-row justify-center gap-4 md:gap-8 text-sm text-purple-300 items-center">
-             <span>© 2025 Women Who Inspire</span>
-             <span class="hidden md:inline">|</span>
-             <button id="privacy-btn" class="hover:text-white underline transition-colors focus:outline-none" data-i18n="footer.privacy">Privacy Policy</button>
-          </div>
-          
-          <div class="mt-8 text-xs text-purple-400 border-t border-purple-800 pt-6">
-            <a href="https://rvvs.us/" target="_blank" class="hover:text-accent transition-colors" data-i18n="footer.developer">
-              Developed by Romanow Web Studio
-            </a>
-          </div>
-        </div>
-    </footer>
-
-    <!-- Cookie Banner -->
-    <div id="cookie-banner" class="hidden fixed bottom-4 left-0 right-0 flex justify-center z-[60] px-4 pointer-events-none">
-        <div class="w-full max-w-2xl bg-gray-900/60 backdrop-blur-xl border border-white/10 text-white px-6 py-4 rounded-full shadow-2xl pointer-events-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p class="text-sm font-medium text-gray-200 text-center sm:text-left pl-2" data-i18n="cookie.text">
-            We use cookies to ensure you get the best experience on our website.
-          </p>
-          <button id="accept-cookies" class="bg-accent text-secondary px-6 py-2 rounded-full text-sm font-bold hover:bg-white transition-all transform hover:scale-105 shadow-lg whitespace-nowrap" data-i18n="cookie.accept">
-            Accept
-          </button>
-        </div>
-    </div>
-
-    <!-- Privacy Modal -->
-    <div id="privacy-modal" class="hidden fixed inset-0 z-[70] flex items-center justify-center p-4">
-        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" id="privacy-backdrop"></div>
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[80vh] overflow-hidden flex flex-col relative z-10 animate-[fadeIn_0.3s_ease-out]">
-            <div class="flex justify-between items-center p-6 border-b border-gray-100">
-                <h2 class="text-2xl font-bold text-secondary" data-i18n="privacy.title">Privacy Policy</h2>
-                <button id="close-privacy" class="p-2 rounded-full hover:bg-gray-100 transition-colors text-gray-500 hover:text-gray-800">
-                    <i data-lucide="x" class="w-6 h-6"></i>
-                </button>
-            </div>
-            <div class="p-6 overflow-y-auto prose max-w-none text-gray-700">
-                <p id="privacy-content" class="whitespace-pre-line"></p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Logic -->
-    <script>
-        // --- DATA ---
-        const UNIFIED_SPONSOR_ICON = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236D28D9' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z'/%3E%3Cpath d='m12 7 1.5 3h3l-2.3 2 1 3-3.2-2.2-3.2 2.2 1-3-2.3-2h3z' fill='%23F59E0B' stroke='none'/%3E%3C/svg%3E`;
-
-        const SPONSORS_DATA = [
-            { id: '1', name: 'Romanow Web Studio', logo: UNIFIED_SPONSOR_ICON, url: 'https://www.instagram.com/romanow.web/' },
-            { id: '2', name: 'No Worries Barber & Brow Co', logo: UNIFIED_SPONSOR_ICON, url: 'https://www.instagram.com/no.worries.place/' }
-        ];
-
-        const CONTENT = {
-            en: {
-                nav: { home: 'Home', about: 'About', program: 'Program', speakers: 'Speakers', contact: 'Location', tickets: 'Get Tickets' },
-                hero: { title: 'Women Who Inspire', subtitle: 'Created by women, for women, and about women! Ukrainian women are flowers of strength that bloom even in the midst of storms.', date: 'January 10, 2025 • 9:00 AM - 5:00 PM PST', location: 'United States', cta: 'Register Now' },
-                timer: { days: 'Days', hours: 'Hours', minutes: 'Minutes', seconds: 'Seconds' },
-                about: { title: 'About the Event', description: 'This is a unique opportunity to meet incredible Ukrainian women who have walked their path and are ready to share it — their ups and downs — and remind you once again that "everything is okay with you," even if you sometimes feel that it is not, and that "you are not alone" — you can always find support for the next step! Join us to get a dose of inspiration, chat, and exchange experiences with other participants.', highlights: [ { title: 'Inspiring Stories', desc: 'Powerful speakers sharing their journeys and expertise.', icon: 'mic' }, { title: 'Powerful Networking', desc: 'Connect with strong Ukrainian women in the US.', icon: 'users' }, { title: 'Expert Stations', desc: 'Learn about yourself with cosmetologists, stylists, and more.', icon: 'star' } ] },
-                program: { title: 'What to Expect', items: [ { time: '09:00', title: 'Welcome & Doors Open', description: 'Check-in and arrival with catering.' }, { time: '09:30', title: 'Speaker Sessions', description: 'Three speakers with different stories, paths, and expertise.' }, { time: '12:00', title: 'Networking Break & Catering', description: 'Connect with participants and enjoy refreshments.' }, { time: '13:00', title: 'Panel Discussion', description: 'Four speakers on "Transformation from Ukrainian experience to American reality."' }, { time: '14:00', title: 'Expert Stations & Activities', description: 'Stations with cosmetologist, stylist, mini photo studio, and more.' }, { time: '14:30', title: 'Fast Pitch Sessions', description: '1-3 minutes to present your business to all participants.' }, { time: '15:30', title: 'Photo Zone & Surprises', description: 'Professional photographers and sponsor surprise bags.' } ] },
-                speakers: { title: 'Meet Our Speakers', items: [ { id: '1', name: 'Coming Soon', role: 'Speaker 1', bio: 'Inspiring stories and expertise to be announced.', image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400&h=500' }, { id: '2', name: 'Coming Soon', role: 'Speaker 2', bio: 'Inspiring stories and expertise to be announced.', image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=400&h=500' }, { id: '3', name: 'Coming Soon', role: 'Speaker 3', bio: 'Inspiring stories and expertise to be announced.', image: 'https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?auto=format&fit=crop&q=80&w=400&h=500' }, { id: '4', name: 'Panel Discussion', role: 'Four Speakers', bio: '"Transformation from Ukrainian experience to American reality" - featuring four expert voices.', image: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&q=80&w=400&h=500' }, { id: '5', name: 'To Be Announced', role: 'Speaker 5', bio: 'Additional expert speaker to be revealed soon.', image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=400&h=500' }, { id: '6', name: 'To Be Announced', role: 'Speaker 6', bio: 'Additional expert speaker to be revealed soon.', image: 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&q=80&w=400&h=500' } ] },
-                sponsors: { title: 'Our Sponsors' },
-                location: { title: 'Venue', venue: 'Virtual & In-Person', address: 'Details to be announced soon.', city: 'United States', note: 'Registered attendees will receive the exact location and access details via email.' },
-                footer: { copyright: 'All rights reserved.', privacy: 'Privacy Policy', developer: 'Developed by Romanow Web Studio' },
-                cookie: { text: 'We use cookies to ensure you get the best experience on our website.', accept: 'Accept' },
-                privacy: { title: 'Privacy Policy', content: 'This Privacy Policy describes how Women Who Inspire collects, uses, and discloses your Personal Information when you visit or make a purchase from the Site. We collect Device Information and Order Information to process your tickets and improve our event services. We do not share your personal information with third parties for marketing purposes without your consent. By using our site, you agree to the collection and use of information in accordance with this policy.' }
-            },
-            uk: {
-                nav: { home: 'Головна', about: 'Про подію', program: 'Програма', speakers: 'Спікери', contact: 'Локація', tickets: 'Квитки' },
-                hero: { title: 'Women Who Inspire', subtitle: 'Створено жінками, для жінок та про жінок! Українські жінки — квіти сили, які розквітають навіть серед бурь.', date: '10 Січня 2025 • 9:00 - 17:00 PST', location: 'США', cta: 'Зареєструватися' },
-                timer: { days: 'Днів', hours: 'Годин', minutes: 'Хвилин', seconds: 'Секунд' },
-                about: { title: 'Про подію', description: 'Це унікальна можливість зустрітися з неймовірними українськими жінками, які пройшли свій шлях і готові поділитися ним — своїми взлітами та паданнями — й нагадати вам ще раз: "з вами все буде добре", навіть якщо вам іноді здається, що ні, і що "ви не самі" — ви завжди можете знайти підтримку для наступного кроку! Приєднайтесь до нас, щоб отримати дозу натхнення, поговорити та обмінятися досвідом з іншими учасниками.', highlights: [ { title: 'Надихаючі Історії', desc: 'Потужні спікери діляться своїми шляхами та експертизою.', icon: 'mic' }, { title: 'Потужний Нетворкінг', desc: 'Спілкуйтесь з сильними українськими жінками в США.', icon: 'users' }, { title: 'Станції Експертів', desc: 'Дізнайтеся більше про себе з косметологами, стилістами та іншими.', icon: 'star' } ] },
-                program: { title: 'Що вас чекає', items: [ { time: '09:00', title: 'Вітання та Відкриття', description: 'Реєстрація, прибуття та кейтеринг.' }, { time: '09:30', title: 'Сесії Спікерів', description: 'Три спікери з різними історіями, шляхами та експертизою.' }, { time: '12:00', title: 'Перерва на Нетворкінг та Кейтеринг', description: 'Спілкуйтесь з учасниками та насолоджуйтесь напитками.' }, { time: '13:00', title: 'Панельна Дискусія', description: '"Трансформація з українського досвіду до американської реальності" — чотири спікери.' }, { time: '14:00', title: 'Станції Експертів та Активності', description: 'Станції з косметологом, стилістом, мініатюрною фотостудією та іншим.' }, { time: '14:30', title: 'Fast Pitch Сесії', description: '1-3 хвилини на презентацію вашого бізнесу всім учасникам.' }, { time: '15:30', title: 'Фотозона та Сюрпризи', description: 'Професійні фотографи та сумки сюрпризів від спонсорів.' } ] },
-                speakers: { title: 'Наші Спікери', items: [ { id: '1', name: 'Незабаром', role: 'Спікер 1', bio: 'Надихаючі історії та експертиза буде оголошена.', image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400&h=500' }, { id: '2', name: 'Незабаром', role: 'Спікер 2', bio: 'Надихаючі історії та експертиза буде оголошена.', image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=400&h=500' }, { id: '3', name: 'Незабаром', role: 'Спікер 3', bio: 'Надихаючі історії та експертиза буде оголошена.', image: 'https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?auto=format&fit=crop&q=80&w=400&h=500' }, { id: '4', name: 'Панельна Дискусія', role: 'Чотири Спікери', bio: '"Трансформація з українського досвіду до американської реальності" — чотири експертні голоси.', image: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&q=80&w=400&h=500' }, { id: '5', name: 'Буде оголошено', role: 'Спікер 5', bio: 'Додатковий експерт буде оголошений незабаром.', image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=400&h=500' }, { id: '6', name: 'Буде оголошено', role: 'Спікер 6', bio: 'Додатковий експерт буде оголошений незабаром.', image: 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&q=80&w=400&h=500' } ] },
-                sponsors: { title: 'Наші Спонсори' },
-                location: { title: 'Локація', venue: 'Віртуально та Особисто', address: 'Деталі будуть оголошені незабаром.', city: 'США', note: 'Зареєстровані учасники отримають точну локацію та деталі доступу електронною поштою.' },
-                footer: { copyright: 'Всі права захищено.', privacy: 'Політика конфіденційності', developer: 'Розроблено Romanow Web Studio' },
-                cookie: { text: 'Ми використовуємо cookie, щоб забезпечити найкращий досвід користування нашим сайтом.', accept: 'Прийняти' },
-                privacy: { title: 'Політика конфіденційності', content: 'Ця Політика конфіденційності описує, як Women Who Inspire збирає, використовує та розкриває вашу особисту інформацію, коли ви відвідуєте або робите покупку на Сайті. Ми збираємо інформацію про пристрій та інформацію про замовлення для обробки ваших квитків та покращення наших послуг. Ми не передаємо вашу особисту інформацію третім особам для маркетингових цілей без вашої згоди. Використовуючи наш сайт, ви погоджуєтесь зі збором та використанням інформації відповідно до цієї політики.' }
-            }
-        };
-
-        let currentLang = 'en';
-
-        // --- TIMER LOGIC ---
-        function startTimer() {
-            // Target Date: January 10, 2025 09:00:00 (PST time - UTC-8)
-            const TARGET_DATE = new Date('2025-01-10T09:00:00-08:00').getTime();
-
-            const daysEl = document.getElementById('timer-days');
-            const hoursEl = document.getElementById('timer-hours');
-            const minutesEl = document.getElementById('timer-minutes');
-            const secondsEl = document.getElementById('timer-seconds');
-
-            function updateTimer() {
-                const now = new Date().getTime();
-                const distance = TARGET_DATE - now;
-
-                if (distance < 0) {
-                    if(daysEl) daysEl.innerText = "00";
-                    if(hoursEl) hoursEl.innerText = "00";
-                    if(minutesEl) minutesEl.innerText = "00";
-                    if(secondsEl) secondsEl.innerText = "00";
-                    return;
-                }
-
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                if(daysEl) daysEl.innerText = days < 10 ? "0" + days : days;
-                if(hoursEl) hoursEl.innerText = hours < 10 ? "0" + hours : hours;
-                if(minutesEl) minutesEl.innerText = minutes < 10 ? "0" + minutes : minutes;
-                if(secondsEl) secondsEl.innerText = seconds < 10 ? "0" + seconds : seconds;
-            }
-
-            // Run immediately then interval
-            updateTimer();
-            setInterval(updateTimer, 1000);
-        }
-
-        // --- RENDER FUNCTIONS ---
-        function renderContent(lang) {
-            // Text Elements
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                const keys = key.split('.');
-                let value = CONTENT[lang];
-                for (const k of keys) {
-                    if (value) value = value[k];
-                }
-                if (value) el.textContent = value;
-            });
-
-            // Update complex sections
-            renderHighlights(lang);
-            renderProgram(lang);
-            renderSpeakers(lang);
-            renderSponsors();
-
-            // Privacy Content
-            document.getElementById('privacy-content').textContent = CONTENT[lang].privacy.content;
-
-            // Re-init icons for new elements
-            lucide.createIcons();
-        }
-
-        function renderHighlights(lang) {
-            const grid = document.getElementById('highlights-grid');
-            grid.innerHTML = CONTENT[lang].about.highlights.map(item => `
-                <div class="p-8 rounded-3xl bg-gray-50 border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 text-center group">
-                    <div class="w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform duration-300">
-                        <i data-lucide="${item.icon}" class="w-8 h-8 ${item.icon === 'star' ? 'text-secondary' : item.icon === 'users' ? 'text-primary' : 'text-accent'}"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">${item.title}</h3>
-                    <p class="text-gray-600 font-medium">${item.desc}</p>
-                </div>
-            `).join('');
-        }
-
-        function renderProgram(lang) {
-            const list = document.getElementById('program-list');
-            list.innerHTML = CONTENT[lang].program.items.map(item => `
-                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col md:flex-row gap-4 md:items-center hover:shadow-md hover:border-primary/20 transition-all duration-300">
-                    <div class="min-w-[110px] flex items-center gap-2 text-primary font-bold text-lg">
-                        <i data-lucide="clock" class="w-5 h-5"></i>
-                        ${item.time}
-                    </div>
-                    <div class="flex-grow">
-                        <h3 class="text-xl font-bold text-gray-800 mb-1">${item.title}</h3>
-                        <p class="text-gray-500 font-medium">${item.description}</p>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function renderSpeakers(lang) {
-            const track = document.getElementById('carousel-track');
-            const speakers = CONTENT[lang].speakers.items;
-            
-            // We'll set the width logic in the resize handler, here we just output HTML
-            track.innerHTML = speakers.map(speaker => `
-                <div class="carousel-item flex-shrink-0 px-4 h-full">
-                    <div class="group text-center h-full">
-                        <div class="relative w-full aspect-[3/4] mx-auto mb-6 rounded-2xl overflow-hidden shadow-lg group-hover:shadow-2xl transition-all duration-500">
-                            <img src="${speaker.image}" alt="${speaker.name}" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" loading="lazy">
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-1">${speaker.name}</h3>
-                        <p class="text-primary font-bold text-sm uppercase tracking-wider mb-3">${speaker.role}</p>
-                        <p class="text-gray-500 font-medium leading-relaxed text-sm">${speaker.bio}</p>
-                    </div>
-                </div>
-            `).join('');
-            
-            updateCarousel(); // Recalculate widths
-        }
-
-        function renderSponsors() {
-            const list = document.getElementById('sponsors-list');
-            list.innerHTML = SPONSORS_DATA.map(sponsor => `
-                <a href="${sponsor.url}" target="_blank" class="group flex flex-col items-center gap-4 transition-transform hover:-translate-y-2 duration-300">
-                   <div class="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden shadow-xl border border-gray-100 group-hover:border-accent group-hover:shadow-2xl transition-all duration-300 bg-white flex items-center justify-center relative">
-                      <img src="${sponsor.logo}" alt="${sponsor.name}" class="w-full h-full object-contain p-8 group-hover:scale-110 transition-transform duration-500">
-                   </div>
-                   <span class="text-lg font-bold text-gray-700 group-hover:text-primary transition-colors">${sponsor.name}</span>
-                </a>
-            `).join('');
-        }
-
-        // --- CAROUSEL LOGIC ---
-        let currentIndex = 0;
-        let itemsPerPage = 3;
-
-        function updateCarousel() {
-            const track = document.getElementById('carousel-track');
-            const items = document.querySelectorAll('.carousel-item');
-            const total = items.length;
-            
-            // Responsive config
-            if (window.innerWidth < 768) itemsPerPage = 1;
-            else if (window.innerWidth < 1024) itemsPerPage = 2;
-            else itemsPerPage = 3;
-
-            // Set widths
-            items.forEach(item => {
-                item.style.width = `${100 / itemsPerPage}%`;
-            });
-
-            // Slide
-            track.style.transform = `translateX(-${currentIndex * (100 / itemsPerPage)}%)`;
-        }
-
-        document.getElementById('next-slide').addEventListener('click', () => {
-             const total = document.querySelectorAll('.carousel-item').length;
-             if (currentIndex + 1 > total - itemsPerPage) {
-                 currentIndex = 0;
-             } else {
-                 currentIndex++;
-             }
-             updateCarousel();
-        });
-
-        document.getElementById('prev-slide').addEventListener('click', () => {
-             const total = document.querySelectorAll('.carousel-item').length;
-             if (currentIndex - 1 < 0) {
-                 currentIndex = total - itemsPerPage;
-             } else {
-                 currentIndex--;
-             }
-             updateCarousel();
-        });
-
-        window.addEventListener('resize', updateCarousel);
-
-        // --- INTERACTIVITY ---
-        
-        // Language Toggle
-        function setLanguage(lang) {
-            currentLang = lang;
-            document.getElementById('current-lang').textContent = lang.toUpperCase();
-            document.getElementById('lang-toggle-mobile').textContent = lang.toUpperCase();
-            renderContent(lang);
-        }
-
-        document.getElementById('lang-toggle').addEventListener('click', () => {
-            setLanguage(currentLang === 'en' ? 'uk' : 'en');
-        });
-        document.getElementById('lang-toggle-mobile').addEventListener('click', () => {
-             setLanguage(currentLang === 'en' ? 'uk' : 'en');
-        });
-
-        // Mobile Menu
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuToggle = document.getElementById('menu-toggle');
-        
-        menuToggle.addEventListener('click', () => {
-             mobileMenu.classList.toggle('hidden');
-             const icon = mobileMenu.classList.contains('hidden') ? 'menu' : 'x';
-             menuToggle.innerHTML = `<i data-lucide="${icon}" class="w-6 h-6"></i>`;
-             lucide.createIcons();
-        });
-
-        document.querySelectorAll('.mobile-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                menuToggle.innerHTML = `<i data-lucide="menu" class="w-6 h-6"></i>`;
-                lucide.createIcons();
-            });
-        });
-
-        // Cookie Banner
-        if (!localStorage.getItem('cookieConsent')) {
-            document.getElementById('cookie-banner').classList.remove('hidden');
-        }
-        document.getElementById('accept-cookies').addEventListener('click', () => {
-            localStorage.setItem('cookieConsent', 'true');
-            document.getElementById('cookie-banner').classList.add('hidden');
-        });
-
-        // Privacy Modal
-        const privacyModal = document.getElementById('privacy-modal');
-        function openPrivacy() { privacyModal.classList.remove('hidden'); }
-        function closePrivacy() { privacyModal.classList.add('hidden'); }
-        
-        document.getElementById('privacy-btn').addEventListener('click', openPrivacy);
-        document.getElementById('close-privacy').addEventListener('click', closePrivacy);
-        document.getElementById('privacy-backdrop').addEventListener('click', closePrivacy);
-
-        // --- INIT ---
-        window.addEventListener('DOMContentLoaded', () => {
-            renderContent('en');
-            startTimer();
-        });
-
-    </script>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen font-sans">
+    <div id="root"></div>
+    <script type="module" src="./index.tsx"></script>
 </body>
 </html>

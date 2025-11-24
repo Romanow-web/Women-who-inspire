@@ -65,6 +65,7 @@ export interface Content {
     address: string;
     city: string;
     note: string;
+    view: string;
   };
   footer: {
     copyright: string;
