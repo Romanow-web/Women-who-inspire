@@ -35,8 +35,6 @@ const ScrollToTop = () => {
 export default function App() {
   const [lang, setLang] = useState<Language>('en');
 
-  console.log(React); // додаємо, щоб React вважався "використаним"
-
   const value = {
     lang,
     setLang,
