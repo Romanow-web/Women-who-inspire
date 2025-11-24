@@ -67,14 +67,14 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="flex flex-col min-h-screen font-sans text-gray-800 bg-white">
       <div className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
-        <header className="pointer-events-auto w-full max-w-5xl bg-gray-900/80 backdrop-blur-xl border border-white/10 shadow-2xl text-white rounded-full px-5 py-3 md:px-8 md:py-4 flex items-center justify-between transition-all duration-300">
+        <header className="pointer-events-auto w-full max-w-5xl bg-gray-900/80 backdrop-blur-xl border border-white/10 shadow-2xl text-white rounded-full px-4 py-2 md:px-8 md:py-4 flex items-center justify-between transition-all duration-300">
           
           <Link 
             to="/" 
             onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} 
-            className="text-lg md:text-xl font-bold tracking-tight text-white hover:text-accent transition-colors flex items-center gap-2"
+            className="text-base md:text-xl font-bold tracking-tight text-white hover:text-accent transition-colors flex items-center gap-2"
           >
-            <Sparkles className="w-5 h-5 text-accent" />
+            <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-accent" />
             Women Who Inspire
           </Link>
 
@@ -123,7 +123,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="text-gray-300 hover:text-white transition-colors p-1"
             >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </header>
