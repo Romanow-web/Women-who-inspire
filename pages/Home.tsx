@@ -60,7 +60,7 @@ const Home: React.FC = () => {
         </div>
 
         <div className="container mx-auto px-4 text-center relative z-10">
-          <div className="inline-flex items-center gap-2 border border-white/30 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-bold tracking-widest uppercase mb-6 shadow-lg">
+          <div className="inline-flex items-center gap-2 border border-white/30 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-bold tracking-widest uppercase mb-6 shadow-lg animate-fade-in hover:scale-105 transition-transform duration-300">
             <Calendar size={16} /> {content.hero.date}
           </div>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight drop-shadow-md">
