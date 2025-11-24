@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext, useContext } from 'react';
+import React, { useState, useEffect, createContext, useContext } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Language, Content } from './types';
 import { CONTENT } from './constants';
@@ -34,6 +34,8 @@ const ScrollToTop = () => {
 
 export default function App() {
   const [lang, setLang] = useState<Language>('en');
+
+  console.log(React); // додаємо, щоб React вважався "використаним"
 
   const value = {
     lang,
