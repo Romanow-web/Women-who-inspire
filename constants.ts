@@ -33,7 +33,7 @@ export const CONTENT: Record<Language, Content> = {
     hero: {
       title: 'Women Who Inspire',
       subtitle: 'Created by women, for women, and about women! Ukrainian women are flowers of strength that bloom even in the midst of storms.',
-      date: 'January 10, 2026 · 9:00 AM - 5:00 PM',
+      date: 'January 10 · 9:00 AM - 5:00 PM',
       location: 'San Diego, California',
       cta: 'Register Now',
     },
@@ -106,7 +106,7 @@ export const CONTENT: Record<Language, Content> = {
     hero: {
       title: 'Women Who Inspire',
       subtitle: 'Створено жінками, для жінок і про жінок! Українські жінки — це квіти сили, що цвітуть навіть посеред штормів.',
-      date: '10 Січня 2026 · 09:00 - 17:00',
+      date: '10 Січня · 09:00 - 17:00',
       location: 'Сан-Дієго, Каліфорнія',
       cta: 'Зареєструватися',
     },

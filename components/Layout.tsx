@@ -116,7 +116,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               onClick={toggleLang}
               className="flex items-center gap-1 text-[10px] font-bold border border-white/20 rounded px-2 py-1 uppercase text-gray-300"
             >
-              <Globe size={16} />
+              <Globe size={14} />
               {lang}
             </button>
             <button
