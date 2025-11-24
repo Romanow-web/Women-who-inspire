@@ -177,7 +177,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           </div>
           
           <div className="mt-8 text-xs text-purple-400 border-t border-purple-800 pt-6">
-            <a href="https://rvvs.us/" target="_blank" rel="noreferrer" className="hover:text-accent transition-colors">
+            <a href="https://rvvs.us/" target="_blank" rel="noreferrer" className="hover:text-accent underline transition-colors">
               {content.footer.developer}
             </a>
           </div>

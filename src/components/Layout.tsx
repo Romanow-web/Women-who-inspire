@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../App';
@@ -169,7 +168,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <p className="text-purple-200 mb-8">{content.hero.date} • {content.hero.location}</p>
           
           <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-8 text-sm text-purple-300 items-center">
-             <span>© {new Date().getFullYear()} Women Who Inspire</span>
+             <span>© Women Who Inspire</span>
              <span className="hidden md:inline">|</span>
              <button onClick={() => setIsPrivacyOpen(true)} className="hover:text-white underline transition-colors focus:outline-none flex items-center gap-2">
                 <Shield size={14} />
@@ -178,7 +177,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           </div>
           
           <div className="mt-8 text-xs text-purple-400 border-t border-purple-800 pt-6">
-            <a href="https://rvvs.us/" target="_blank" rel="noreferrer" className="hover:text-accent transition-colors">
+            <a href="https://rvvs.us/" target="_blank" rel="noreferrer" className="hover:text-accent underline transition-colors">
               {content.footer.developer}
             </a>
           </div>
